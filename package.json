@@ -1,0 +1,99 @@
+{
+  "name": "leaflet-planetary-with-stac",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "description": "Forked CartoCosmos Leaflet webmap with added ability to discover USGS Analysis Ready Data (ARD) holdings using the SpatioTemporal Asset Catalogs (STAC) API.",
+  "authors": "GeoSTAC",
+  "contributors": [
+    {
+      "name": "Amy Stamile",
+      "url": "https://github.com/amystamile"
+    },
+    {
+      "name": "Zachary Kaufman",
+      "url": "https://github.com/zak52"
+    },
+    {
+      "name": "Jacob Cain",
+      "url": "https://github.com/jrc632"
+    },
+    {
+      "name": "Gavin Nelson",
+      "url": "https://github.com/gsn9"
+    }
+  ],
+  "homepage": "https://github.com/GeoSTAC/CartoCosmos-with-STAC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GeoSTAC/CartoCosmos-with-STAC.git"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "lint": "eslint --ext .js src",
+    "test": "mocha --require @babel/register",
+    "fix": "npm run lint --fix",
+    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
+    "generate-docs": "node_modules/.bin/jsdoc src/js/  --configure .jsdoc.json --verbose",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/register": "^7.17.0",
+    "@babel/runtime": "^7.17.2",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-import": "^1.13.3",
+    "babel-preset-airbnb": "^5.0.0",
+    "braintree-jsdoc-template": "^3.3.0",
+    "chai": "^4.3.6",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.6.0",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "gh-pages": "^3.2.3",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jsdoc": "^3.6.10",
+    "jsdom": "^19.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^9.2.0",
+    "onchange": "^7.1.0",
+    "prettier": "^2.5.1",
+    "prop-types": "^15.8.1",
+    "style-loader": "^3.3.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/icons-material": "^5.4.1",
+    "@mui/material": "^5.4.1",
+    "@mui/x-date-pickers": "^5.0.4",
+    "@svgr/webpack": "^6.2.1",
+    "@trussworks/react-uswds": "^3.1.0",
+    "autoprefixer": "^10.4.2",
+    "date-fns": "^2.28.0",
+    "jquery": "^3.6.0",
+    "leaflet": "^1.7.1",
+    "leaflet-draw": "^1.0.4",
+    "proj4leaflet": "^1.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-reverse-portal": "^2.1.1",
+    "wicket": "^1.3.8"
+  }
+}

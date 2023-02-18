@@ -1,0 +1,6 @@
+name: GeoSTAC
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - nodejs

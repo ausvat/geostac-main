@@ -1,0 +1,430 @@
+@import "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css";
+@import "~@trussworks/react-uswds/lib/index.css";
+@import "~@trussworks/react-uswds/lib/uswds.css";
+
+/*
+ * App Layout (Flex)
+ */
+
+html,
+body,
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  background: lightgray;
+  overflow-y: hidden;
+}
+
+.scroll-parent {
+  min-height: 0;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+#header,
+#footer {
+  flex-shrink: 0;
+}
+
+.flex {
+  flex-grow: 1;
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.red {
+  color: red;
+}
+
+#right-bar {
+  flex-shrink: 0;
+  background: lightgray;
+  display: flex;
+  flex-direction: row;
+}
+
+/*
+ * Map
+ */
+
+#map-area {
+  flex-grow: 1;
+}
+
+#map-container {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+/*
+ * Menu Bar
+ */
+
+#menu-bar {
+  color: white;
+  background-color: #03989e;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: row;
+  padding: 0px 7px;
+}
+
+.menu-item {
+  margin: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  border-bottom: 2px solid white;
+  margin-bottom: 3px;
+}
+
+.menu-item-text {
+  margin: 0px 4px;
+}
+
+.menu-link {
+  color: white;
+}
+
+/*
+ * Credits Bar
+ */
+
+#credits-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.credit-item {
+  background: #f8f9fa;
+  color: #343a40;
+  border: 5px #ff0000;
+  flex-grow: 1;
+  align-content: center;
+  text-align: center;
+}
+
+/*
+ * Toolbar
+ */
+
+.flexbar {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.flexbar-item {
+  margin: 5px;
+}
+
+/*
+ * Query Console
+*/
+
+#query-console-container {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #cecedb;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#query-console-collapsed {
+  line-height: 32px;
+  text-align: left;
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-content: baseline;
+}
+
+#query-console-title {
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+#query-function {
+  display: inline-flex;
+  align-items: center;
+}
+
+#query-command-bar {
+  padding: 10px;
+}
+
+#query-textarea-container {
+  display: flex;
+  background: #1971c2;
+}
+
+#query-textarea {
+  font-family: Consolas "Lucida Console" "Cascadia Code" monospace;
+  font-size: 13pt;
+  flex: auto;
+  resize: none;
+  outline: none;
+  border-radius: 0;
+  border: none;
+  background: #1971c2;
+  color: #ffffff;
+  width: auto;
+  padding: 15px;
+}
+
+#query-textarea::placeholder {
+  color: #eeeeee;
+  opacity: 1;
+}
+
+/*
+Controls the CSS for projection buttons when there is no available projection
+*/
+
+.disabled {
+  opacity: 40%;
+}
+
+.leaflet-control-view-center {
+  background-image: url("https://raw.github.com/pwldp/leaflet.viewcenter/master/icon-viewcenter.png");
+}
+
+/*
+ * Sidebar
+ */
+
+#sidebar-collapsed {
+  background: lightgray;
+  cursor: pointer;
+  font-size: 12pt;
+  line-height: 20px;
+  font-family: sans-serif;
+  font-weight: 600;
+  text-align: center;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.panelSection {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 10px;
+}
+
+.panelHeader {
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  display: block;
+}
+
+.panelSectionHeader {
+  display: inline;
+  font-family: sans-serif;
+}
+
+.panelItem {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.panelSectionTitle {
+  display: inline;
+}
+
+.panelSectionCheck {
+  float: right;
+  margin-top: -12px;
+  margin-bottom: -10px;
+  margin-right: -10px;
+}
+
+.panelSortAscCheck {
+  float: right;
+  margin-right: -10px;
+}
+
+.resultHeader {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: baseline;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  width: 275px;
+}
+
+.resultHeaderCheck {
+  justify-content: flex-end;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  margin-right: 10px;
+}
+
+.resultsList {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  overflow-y: scroll;
+}
+
+.resultContainer {
+  width: 268px;
+  display: grid;
+  grid-template:
+    "ra rb"
+    "rc rc"
+    / 20% 80%;
+  border-bottom: 3px double rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+.resultSub {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: small;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  margin-bottom: 3px;
+  word-wrap: break-word;
+}
+
+.resultImgDiv {
+  grid-area: ra;
+}
+
+.resultData {
+  grid-area: rb;
+}
+
+.resultLinks {
+  grid-area: rc;
+}
+
+.resultImg {
+  max-width: 32px;
+  max-height: 96px;
+}
+
+summary {
+  cursor: pointer;
+  width: auto;
+  padding: auto;
+  vertical-align: center;
+}
+
+/*
+ * GeoTiff Modal Container
+ */
+
+#GeoTiffModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 30;
+  background-color: white;
+  width: 250px;
+  max-width: 80%;
+}
+
+#GeoTiffModal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#GeoTiffModalHeader {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+#GeoTiffModalHeader #GeoTiffTitle {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#GeoTiffModalHeader #GeoTiffCloseButton {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#GeoTiffAssetsDiv {
+  position: relative;
+  padding: 10px 15px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+#GeoTiffAsset {
+  max-width: 100%;
+  max-height: 100%;
+  height: 300px;
+  width: 300px;
+  position: relative;
+  align-items: center;
+}
+
+#GeoTiffModalFooter {
+  padding: 10px;
+  flex-shrink: 1;
+}
+
+#GeoTiffOverlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 10;
+}
+
+#GeoTiffOverlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
